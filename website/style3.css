@@ -1,0 +1,54 @@
+<style>
+        body {
+            font-family: tahoma;
+            margin: 50px;
+        }
+        .container {
+            max-width: 300px;
+            width: 300px;
+            height: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            background-color: rgb(121, 119, 118);
+        }
+        h2{
+            color: rgb(0, 0, 0);
+            margin-top: 20px;
+        }
+        label{
+            color: rgb(0, 0, 0);
+        }
+        label{
+            color: #000000;
+            margin: 10px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #000000;
+            color: rgb(245, 242, 242);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #000000;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>

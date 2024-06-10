@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest Calculator</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Compound Interest Calculator</h1>
+        <label for="principal">Principal Amount:</label>
+        <input type="number" id="principal" placeholder="Enter principal amount">
+
+        <label for="rate">Annual Interest Rate (%):</label>
+        <input type="number" id="rate" placeholder="Enter interest rate">
+
+        <label for="time">Time Period (years):</label>
+        <input type="number" id="time" placeholder="Enter time period in years">
+
+        <label for="frequency">Compounding Frequency (times per year):</label>
+        <input type="number" id="frequency" placeholder="Enter compounding frequency">
+
+        <button onclick="calculateCompoundInterest()">Calculate Interest</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateCompoundInterest() {
+            // Get input values
+            var principal = parseFloat(document.getElementById('principal').value);
+            var rate = parseFloat(document.getElementById('rate').value);
+            var time = parseFloat(document.getElementById('time').value);
+            var frequency = parseFloat(document.getElementById('frequency').value);
+
+            // Check if input values are valid numbers
+            if (isNaN(principal) || isNaN(rate) || isNaN(time) || isNaN(frequency)) {
+                document.getElementById('result').innerText = 'Please enter valid numbers';
+                return;
+            }
+
+            // Calculate compound interest
+            var amount = principal * Math.pow((1 + (rate / (frequency * 100))), frequency * time);
+            var interest = amount - principal;
+
+            // Display the result
+            document.getElementById('result').innerText = 'The compound interest is: ' + interest.toFixed(2);
+        }
+    </script>
+</body>
+</html>

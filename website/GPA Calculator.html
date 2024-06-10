@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <div class="container">
+        <h1>GPA Calculator</h1>
+        <div id="courses">
+            <div class="course">
+                <input type="text" class="grade" placeholder="Grade (e.g., A, B+, C)">
+                <input type="number" class="credits" placeholder="Credit Unit">
+            </div>
+        </div>
+        <button onclick="addCourse()">Add Another Course</button>
+        <button onclick="calculateGPA()">Calculate GPA</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function addCourse() {
+            var courseContainer = document.getElementById('courses');
+            var courseDiv = document.createElement('div');
+            courseDiv.className = 'course';
+            courseDiv.innerHTML = `
+                <input type="text" class="grade" placeholder="Grade (e.g., A, B+, C)">
+                <input type="number" class="credits" placeholder="Credit Hours">
+            `;
+            courseContainer.appendChild(courseDiv);
+        }
+
+        function calculateGPA() {
+            var gradeElements = document.getElementsByClassName('grade');
+            var creditElements = document.getElementsByClassName('credits');
+            var totalPoints = 0;
+            var totalCredits = 0;
+
+            for (var i = 0; i < gradeElements.length; i++) {
+                var grade = gradeElements[i].value.toUpperCase();
+                var credits = parseFloat(creditElements[i].value);
+
+                if (!credits || credits <= 0 || !grade) {
+                    continue;
+                }
+
+                var points = getGradePoints(grade);
+
+                if (points === null) {
+                    document.getElementById('result').innerText = 'Please enter valid grades (e.g., A, B+, C).';
+                    return;
+                }
+
+                totalPoints += points * credits;
+                totalCredits += credits;
+            }
+
+            if (totalCredits === 0) {
+                document.getElementById('result').innerText = 'Please enter valid grades and credit hours.';
+                return;
+            }
+
+            var gpa = totalPoints / totalCredits;
+            document.getElementById('result').innerText = 'Your GPA is: ' + gpa.toFixed(2);
+        }
+
+        function getGradePoints(grade) {
+            switch (grade) {
+                case 'A': return 5.0;
+                case 'A': return 4.0;
+                case 'A-': return 3.7;
+                case 'B+': return 3.3;
+                case 'B': return 3.0;
+                case 'B-': return 2.7;
+                case 'C+': return 2.3;
+                case 'C': return 2.0;
+                case 'C-': return 1.7;
+                case 'D+': return 1.3;
+                case 'D': return 1.0;
+                case 'F': return 0.0;
+                default: return null;
+            }
+        }
+    </script>
+</body>
+</html>
+
